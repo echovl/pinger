@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./db/mysql/init.sql:/data/application/init.sql
+      - ~/apps/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=dev
+      - MYSQL_PASSWORD=dev
+      - MYSQL_USER=dev
+      - MYSQL_DATABASE=pinger
